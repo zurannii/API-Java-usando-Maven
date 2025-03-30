@@ -1,12 +1,11 @@
-package br.com.dio.service.query.impi;
+package br.com.dio.service.query.impl;
 
 import br.com.dio.entidades.ClientEntity;
-import br.com.dio.exeption.NotFoundExeption;
-import br.com.dio.exeption.PhoneInUseException;
+import br.com.dio.exception.NotFoundException;
+import br.com.dio.exception.PhoneInUseException;
 import br.com.dio.repositoy.IClientRepository;
 import br.com.dio.service.query.IClientQueryService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

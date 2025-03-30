@@ -1,4 +1,4 @@
-package br.com.dio.exeption;
+package br.com.dio.exception;
 
 public class PhoneInUseException extends RuntimeException {
     public PhoneInUseException(String message) {

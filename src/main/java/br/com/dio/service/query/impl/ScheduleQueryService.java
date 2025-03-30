@@ -1,17 +1,22 @@
-package br.com.dio.service.query.impi;
+package br.com.dio.service.query.impl;
 
 import br.com.dio.entidades.ScheduleEntity;
+import br.com.dio.exception.NotFoundException;
+import br.com.dio.exception.ScheduleInUseException;
+import br.com.dio.repositoy.IScheduleRepository;
 import br.com.dio.service.query.ISchedulesQueryService;
-import br.com.dio.repositoy.ISchedulesRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Repository;
+
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @Repository
 @AllArgsConstructor
+
 public class ScheduleQueryService implements ISchedulesQueryService {
 
-    private final ISchedulesRepository repository;
+    private final IScheduleRepository repository;
 
     @Override
     public ScheduleEntity findById(final long id) {
@@ -20,6 +25,7 @@ public class ScheduleQueryService implements ISchedulesQueryService {
         );
     }
 
+
     @Override
     public List<ScheduleEntity> findInMonth(final OffsetDateTime startAt, final OffsetDateTime endAt) {
         return repository.findByStartAtGreaterThanEqualAndEndAtLessThanEqualOrderByStartAtAscEndAtAsc(startAt, endAt);
@@ -27,9 +33,11 @@ public class ScheduleQueryService implements ISchedulesQueryService {
 
     @Override
     public void verifyIfScheduleExists(final OffsetDateTime startAt, final OffsetDateTime endAt) {
-        if (repository.existsByStartAtAndEndAt(startAt, endAt)){
+        if (repository.existsByStartAtAndEndAt(startAt, endAt)) {
             var message = "Já existe um cliente agendado no horário solicitado";
             throw new ScheduleInUseException(message);
         }
     }
+
+}
 
