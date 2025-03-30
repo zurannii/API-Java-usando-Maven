@@ -1,4 +1,4 @@
-package br.com.dio;
+package br.com.dio.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
