@@ -1,22 +1,10 @@
 spring:
-<<<<<<< HEAD
-application:
-name: barber-shop-api
-datasource:
-url: ${DB_URL}
-username: ${DB_USER}
-password: ${DB_PASSWORD}
-jpa:
-hibernate:
-ddl-auto: validate
-=======
-  application:
-    name: barber-shop-api
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-  jpa:
-    hibernate:
-      ddl-auto: validate
->>>>>>> e552e56 (ajustando applications)
+    application:
+        name: barber-shop-api
+    datasource:
+        url: ${DB_URL}
+        username: ${DB_USER}
+        password: ${DB_PASSWORD}
+    jpa:
+        hibernate:
+            ddl-auto: validate

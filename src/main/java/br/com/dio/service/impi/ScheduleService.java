@@ -5,17 +5,24 @@ import br.com.dio.repositoy.IScheduleRepository;
 import br.com.dio.service.ISchedulesService;
 import br.com.dio.service.query.ISchedulesQueryService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 
 @Service
-@AllArgsConstructor
 
 public class ScheduleService implements ISchedulesService {
 
     private final IScheduleRepository repository;
     private final ISchedulesQueryService queryService;
+
+    // Construtor que o Spring usará para injetar as dependências
+    @Autowired
+    public ScheduleService(IScheduleRepository repository, ISchedulesQueryService queryService) {
+        this.repository = repository;
+        this.queryService = queryService;
+    }
 
     @Override
     public ScheduleEntity save(final ScheduleEntity entity) {

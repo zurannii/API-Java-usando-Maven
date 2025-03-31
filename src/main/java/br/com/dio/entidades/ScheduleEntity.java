@@ -24,8 +24,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
                 @UniqueConstraint(name = "UK_SCHEDULE_INTERVAL", columnNames = {"start_at", "end_at"}),
         }
 )
-@Getter
-@Setter
+
 @ToString
 public class ScheduleEntity {
 
@@ -43,6 +42,38 @@ public class ScheduleEntity {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private ClientEntity client = new ClientEntity();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public OffsetDateTime getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(OffsetDateTime startAt) {
+        this.startAt = startAt;
+    }
+
+    public OffsetDateTime getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(OffsetDateTime endAt) {
+        this.endAt = endAt;
+    }
+
+    public ClientEntity getClient() {
+        return client;
+    }
+
+    public void setClient(ClientEntity client) {
+        this.client = client;
+    }
 
     @Override
     public boolean equals(final Object o) {

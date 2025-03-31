@@ -4,14 +4,32 @@ import br.com.dio.repositoy.IClientRepository;
 import br.com.dio.service.IClientService;
 import br.com.dio.service.query.IClientQueryService;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@AllArgsConstructor
 public class ClientService implements IClientService {
 
     private final IClientRepository repository;
     private final IClientQueryService queryService;
+
+
+    // Construtor que será usado pelo Spring para injetar as dependências
+    @Autowired
+    public ClientService(IClientRepository repository, IClientQueryService queryService) {
+        this.repository = repository;
+        this.queryService = queryService;
+    }
+
+
+    public IClientRepository getRepository() {
+        return repository;
+    }
+
+    public IClientQueryService getQueryService() {
+        return queryService;
+    }
 
     @Override
     public ClientEntity save(ClientEntity entity) {

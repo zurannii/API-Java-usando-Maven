@@ -6,17 +6,21 @@ import br.com.dio.exception.ScheduleInUseException;
 import br.com.dio.repositoy.IScheduleRepository;
 import br.com.dio.service.query.ISchedulesQueryService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
 @Repository
-@AllArgsConstructor
 
 public class ScheduleQueryService implements ISchedulesQueryService {
 
     private final IScheduleRepository repository;
+    @Autowired
+    public ScheduleQueryService(IScheduleRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public ScheduleEntity findById(final long id) {

@@ -6,16 +6,21 @@ import br.com.dio.exception.PhoneInUseException;
 import br.com.dio.repositoy.IClientRepository;
 import br.com.dio.service.query.IClientQueryService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
-@AllArgsConstructor
 public class ClientQueryService implements IClientQueryService {
 
     private final IClientRepository repository;
+
+    @Autowired
+    public ClientQueryService(IClientRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public ClientEntity findById(final long id) {

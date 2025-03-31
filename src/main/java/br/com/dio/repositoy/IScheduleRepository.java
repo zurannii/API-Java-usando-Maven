@@ -9,16 +9,12 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 @Repository
-public interface IScheduleRepository extends JpaRepository<ScheduleEntity, Long>{
-
-    list<ScheduleEntity> FindByStartAtGreaterThanEqualAndEndAtLessThenEqualOrderByStartAtEndAt(
-            final OffsetDateTime startAt,
-            final OffsetDateTime endAt);
-
-    boolean existsByStartAtAndEndAt(final OffsetDateTime startAt,
-                                    final OffsetDateTime endAt);
+public interface IScheduleRepository extends JpaRepository<ScheduleEntity, Long> {
 
     List<ScheduleEntity> findByStartAtGreaterThanEqualAndEndAtLessThanEqualOrderByStartAtAscEndAtAsc(
-            OffsetDateTime startAt,
-            OffsetDateTime endAt);
+            final OffsetDateTime startAt,
+            final OffsetDateTime endAt
+    );
+
+    boolean existsByStartAtAndEndAt(final OffsetDateTime startAt, final OffsetDateTime endAt);
 }

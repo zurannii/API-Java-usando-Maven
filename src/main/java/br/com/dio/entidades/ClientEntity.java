@@ -26,8 +26,6 @@ import static jakarta.persistence.GenerationType.IDENTITY;
                 @UniqueConstraint(name = "UK_PHONE", columnNames = "phone")
         }
 )
-@Getter
-@Setter
 @ToString
 public class ClientEntity {
 
@@ -48,9 +46,52 @@ public class ClientEntity {
     @OneToMany(mappedBy = "client", cascade = ALL, orphanRemoval = true)
     private Set<ScheduleEntity> schedules = new HashSet<>();
 
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Set<ScheduleEntity> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(Set<ScheduleEntity> schedules) {
+        this.schedules = schedules;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (!(o instanceof ClientEntity that)) return false;
+
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(email, that.email) &&
