@@ -12,6 +12,7 @@ import br.com.dio.service.IClientService;
 import br.com.dio.service.query.IClientQueryService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 public class ClientController {
 
+    @Autowired
     public ClientController(IClientService service, IClientQueryService queryService, IClientMapper mapper) {
         this.service = service;
         this.queryService = queryService;
